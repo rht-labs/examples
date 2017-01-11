@@ -10,7 +10,7 @@ public class VertxApp extends AbstractVerticle {
 
 		vertx.createHttpServer()
 				.requestHandler(req -> req.response().end(String.format("Hello World from Vert.x %d!%n", serviceID)))
-				.listen(8081);
+				.listen(8082);
 	}
 
 }
