@@ -22,8 +22,6 @@ import org.jboss.resteasy.client.ClientResponse;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 
 @Path("/")
 public class EEApp {
@@ -32,7 +30,7 @@ public class EEApp {
     @GET
     public String getHelloWorldJSON() throws Exception {
 
-        String springUrl = System.getProperty("springUrl");
+        String springUrl = System.getProperty("spring.url");
         if (springUrl == null || springUrl.isEmpty()) {
             springUrl = "http://localhost:8082";
         }

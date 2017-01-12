@@ -22,10 +22,7 @@
     <artifactId>ee-app</artifactId>
     <version>6.4.0.GA</version>
     <packaging>war</packaging>
-    <name>JBoss EAP Quickstart: helloworld-rs</name>
-    <description>JBoss EAP Quickstart: Helloworld using JAX-RS</description>
 
-    <url>http://jboss.org/jbossas</url>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
