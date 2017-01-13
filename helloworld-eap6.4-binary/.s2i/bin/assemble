@@ -6,8 +6,4 @@
 WAR_FILE=`echo ${WAR_URL} | sed -ne 's/.*\/\(.*\)$/\1/p'`
 curl -v ${WAR_URL} -o $JBOSS_HOME/standalone/deployments/ROOT.war
 
-if [ -n "${SOLR_CONF_URL}" ]; then
-  mkdir ${JBOSS_HOME}/conf
-  curl -v ${SOLR_CONF_URL} -o ${JBOSS_HOME}/conf/solrcore.properties
-fi
 

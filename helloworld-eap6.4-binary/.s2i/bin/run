@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -n "${SOLR_CONF_URL}" ]; then
+  mkdir ${JBOSS_HOME}/conf
+  curl -v ${SOLR_CONF_URL} -o ${JBOSS_HOME}/conf/solrcore.properties
+fi
+
+exec $JBOSS_HOME/bin/openshift-launch.sh
+
