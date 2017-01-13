@@ -4,9 +4,14 @@ This example will show you how to build and deploy a WAR file to OpenShift in di
 
 ## Deployment
 * Local: First, start up a JBoss EAP 6.4 instance and then run `mvn clean package jboss-as:deploy`
-* OpenShift: 
+* OpenShift, build WAR with s2i: 
   * makes sure your `oc` client is in the right project.
-  * `oc new-app registry.access.redhat.com/jboss-eap-6/eap64-openshift:latest~https://github.com/rht-labs/examples.git --context-dir=helloworld-eap6.4-war --name=helloworld`
+  * `oc new-app registry.access.redhat.com/jboss-eap-6/eap64-openshift:latest~https://github.com/rht-labs/examples.git --context-dir=helloworld-eap6.4 --name=helloworld`
+* OpenShift, use existing WAR with s2i:
+  * TODO defined further
+  * Will need to customize the assemble script per [the docs](https://docs.openshift.org/latest/dev_guide/builds.html#using-external-artifacts)
+  * WAR for this binary exists in the [Labs Nexus](http://nexus.core.rht-labs.com/repository/labs-releases/org/jboss/quickstarts/eap/jboss-kitchensink/6.4.0.GA/jboss-kitchensink-6.4.0.GA.war)
+  
 
 
 ## Origin

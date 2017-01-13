@@ -295,4 +295,17 @@
         </profile>
 
     </profiles>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>http://nexus.core.rht-labs.com/repository/labs-releases/</url>
+            <layout>default</layout>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <url>http://nexus.core.rht-labs.com/repository/labs-snapshots/</url>
+            <layout>default</layout>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
