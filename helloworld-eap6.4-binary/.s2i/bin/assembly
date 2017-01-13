@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# This assembly script expects the WAR_URL to be of the format:
+# http://<host>/.../name.war
+
+WAR_FILE=`echo ${WAR_URL} | sed -ne 's/.*\/\(.*\)$/\1/p'`
+wget ${WAR_URL} -O $JBOSS_HOME/standalone/deployments/${WAR_FILE}
