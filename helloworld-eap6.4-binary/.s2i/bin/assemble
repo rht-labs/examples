@@ -4,4 +4,4 @@
 # http://<host>/.../name.war
 
 WAR_FILE=`echo ${WAR_URL} | sed -ne 's/.*\/\(.*\)$/\1/p'`
-wget ${WAR_URL} -O $JBOSS_HOME/standalone/deployments/${WAR_FILE}
+curl -v ${WAR_URL} -o $JBOSS_HOME/standalone/deployments/${WAR_FILE}
