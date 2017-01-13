@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # This assembly script expects the WAR_URL to be of the format:
-# http://<host>/.../name.war
+# http://<host>/.../<name>.war
 
 WAR_FILE=`echo ${WAR_URL} | sed -ne 's/.*\/\(.*\)$/\1/p'`
-curl -v ${WAR_URL} -o $JBOSS_HOME/standalone/deployments/${WAR_FILE}
+curl -v ${WAR_URL} -o $JBOSS_HOME/standalone/deployments/ROOT.war
