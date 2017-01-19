@@ -5,5 +5,10 @@ if [ -n "${SOLR_CONF_URL}" ]; then
   curl -v ${SOLR_CONF_URL} -o ${JBOSS_HOME}/conf/solrcore.properties
 fi
 
+if [ -n "${COMPRESSED_ARCHIVE_URL}" ] && [ -n "${COMPRESSED_ARCHIVE_HOME}" ]; then
+  curl -v ${COMPRESSED_ARCHIVE_URL} -o ${COMPRESSED_ARCHIVE_DESTINATION}
+  tar -xvf ${COMPRESSED_ARCHIVE_DESTINATION} --directory ${COMPRESSED_ARCHIVE_HOME}
+fi
+
 exec $JBOSS_HOME/bin/openshift-launch.sh
 
