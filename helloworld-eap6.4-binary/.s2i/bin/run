@@ -1,8 +1,23 @@
 #!/bin/sh
 
+
+#AVAILABLE PARAMETERS - All paramters are optional although some need to be coordinated if used
+#SOLR_CONF_URL = The url to where the solr properties are archived
+#SOLR_CONF_DESTINATION = The directory where the solr properties will exist with the image
+#COMPRESSED_ARCHIVE_URL = The url to where the tarred archive is located
+#COMPRESSED_ARCHIVE_HOME = The directory where the archived will be located on the image
+#COMPRESSED_ARCHIVE_DESTINATION = The directory where the archive will be untarred
+
+
 if [ -n "${SOLR_CONF_URL}" ]; then
-  mkdir ${JBOSS_HOME}/conf
-  curl -v ${SOLR_CONF_URL} -o ${JBOSS_HOME}/conf/solrcore.properties
+  SOLR_CONF_DIR=${JBOSS_HOME}/conf
+
+  if [ -n "${SOLR_CONF_DESTINATION}" ]; then
+    SOLR_CONF_DIR="${SOLR_CONF_DESTINATION}"
+  fi
+
+  mkdir "${SOLR_CONF_DIR}"
+  curl -v ${SOLR_CONF_URL} -o ${SOLR_CONF_DIR}/solrcore.properties
 fi
 
 if [ -n "${COMPRESSED_ARCHIVE_URL}" ] && [ -n "${COMPRESSED_ARCHIVE_HOME}" ]; then
