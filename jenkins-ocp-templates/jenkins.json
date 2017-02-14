@@ -1,0 +1,32 @@
+{
+	"name": "jenkins",
+	"openshift_clusters": [
+		{
+			"openshift_resources": {
+				"projects": [
+					{
+						"name": "pipelines",
+						"display_name": "Pipelines",
+						"environment_type": "build",
+						"templates": [
+							{
+								"name": "jenkins-s2i",
+								"parameters": {
+									"SOURCE_REPOSITORY_URL": "https://github.com/sherl0cks/openshift-jenkins-s2i-config.git",
+									"SOURCE_REPOSITORY_REF": "jenkins-2",
+									"NAME": "jenkins"
+								}
+							},
+							{
+								"name": "jenkins-ephemeral",
+								"parameters": {
+									"NAMESPACE": "pipelines"
+								}
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}
