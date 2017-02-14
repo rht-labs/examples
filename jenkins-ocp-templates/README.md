@@ -13,7 +13,7 @@ This is an ansible playbook, so run it like normal playbooks
 $ ansible-playbook -i <inventory-file> jenkins.yml
 ```
 
- We've provided an example inventory file. You'll need to copy this and create your own, replacing:
+We've provided an example inventory file. You'll need to copy this and create your own, replacing:
 
 * `openshift_user`: user to login into openshift
 * `openshift_password`: password for above user
@@ -22,14 +22,14 @@ $ ansible-playbook -i <inventory-file> jenkins.yml
 
 # Notes
 
-General
+**General:**
 * only `openshift_url` is supported, not `openshift_cluster.openshift_host_env`
 * the Jenkins password is generated, you can add the below line beneath line 22 of `jenkins.json` to set the password:
 ``` json
 "JENKINS_PASSWORD": "your_password_here",
 ```
 
-The error handling isn't robust in this playbook. To make things go smoothly:
+**The error handling isn't robust in this playbook. To make things go smoothly:**
 * pick a user that has privileges to create new projects
 * ensure a project named `pipelines` does not exit when you run this playbook
   * this means deleting the existing project if you need to rerun for any reason
