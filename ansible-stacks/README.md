@@ -4,7 +4,7 @@ A set of example definitions that can be used with the [ansible-stacks](https://
 ## Loading up a local .json file
 * Clone the ansible-stacks repo, or use a stable release.
 ```
-git clone https://github.com/rht-labs/ansible-stacks
+> git clone https://github.com/rht-labs/ansible-stacks
 ``` 
 * Prepare for execution
  * Install `ansible`
@@ -15,8 +15,8 @@ git clone https://github.com/rht-labs/ansible-stacks
 
 *NOTE: The user used to run the playbook needs to have the proper admin rights in the OpenShift cluster, e.g.: cluster-admin - see above*
 ```
-cd ansible-stacks/playbooks
-cp <path>/examples/ansible-stacks/pipeline_example.json infra_env.json 
-vi infra_env.json # make changes to the setup here...
-ansible-playbook -e "openshift_user=joe" -e "openshift_password=password" load_infra_local.json 
+> cd ansible-stacks/playbooks
+> cp <path>/examples/ansible-stacks/pipeline_example.json infra_env.json 
+> vi infra_env.json # make changes to the setup here...
+> ansible-playbook -e "openshift_user=joe" -e "openshift_password=password" load_infra_local.json 
 ```
