@@ -18,5 +18,5 @@ git clone https://github.com/rht-labs/ansible-stacks
 cd ansible-stacks/playbooks
 cp <path>/examples/ansible-stacks/pipeline_example.json infra_env.json 
 vi infra_env.json # make changes to the setup here...
-ansible-playbook -e "openshift_user=joe" -e "openshift_password=password" load_inrfa_local.json 
+ansible-playbook -e "openshift_user=joe" -e "openshift_password=password" load_infra_local.json 
 ```
