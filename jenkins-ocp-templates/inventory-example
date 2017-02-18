@@ -1,2 +1,0 @@
-[openshift]
-examplehost ansible_connection=local openshift_password=admin openshift_user=admin

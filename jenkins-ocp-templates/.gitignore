@@ -1,2 +1,4 @@
 inventory
 *.retry
+roles
+ansible-stacks

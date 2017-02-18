@@ -2,23 +2,26 @@
 
 This example shows how to use the out of the box [Jenkins templates from OpenShift](https://github.com/openshift/origin/blob/master/examples/jenkins/jenkins-ephemeral-template.json) with the [Jenkins S2I builder](https://docs.openshift.com/container-platform/3.3/using_images/other_images/jenkins.html), and configuration manage the whole thing with [ansible-stacks](https://github.com/rht-labs/ansible-stacks).
 
-# TODO
+# Requirements
 
-* Add requirements.yml
+The following must be installed and on your `$PATH`
+
+- `oc`
+- `ansible` 2.2.0.0 or 2.2.1.0
+- `git`
+
 
 # Usage
 
-This is an ansible playbook, so run it like normal playbooks
 ``` bash
-$ ansible-playbook -i <inventory-file> jenkins.yml
+$ ./run.sh
 ```
 
-We've provided an example inventory file. You'll need to copy this and create your own, replacing:
+The script will prompt you for the following
 
-* `openshift_user`: user to login into openshift
+* `openshift_user`: user to login into OpenShift
 * `openshift_password`: password for above user
 * `openshift_url`: OpenShift REST API endpoint
-* `hostname`, although it work if you leave the example value
 
 # Notes
 
