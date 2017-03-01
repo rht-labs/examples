@@ -19,7 +19,8 @@
               {
                 "name": "jenkins-ephemeral",
                 "parameters": {
-                  "NAMESPACE": "pipelines"
+                  "NAMESPACE": "pipelines",
+                  "MEMORY_LIMIT": "2Gi"
                 }
               }
             ]
