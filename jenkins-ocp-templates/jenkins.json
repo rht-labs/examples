@@ -1,0 +1,32 @@
+{
+  "name": "jenkins",
+  "openshift_clusters": [
+    {
+      "openshift_resources": {
+        "projects": [
+          {
+            "name": "pipelines",
+            "display_name": "Pipelines",
+            "environment_type": "build",
+            "templates": [
+              {
+                "name": "jenkins-s2i",
+                "parameters": {
+                  "SOURCE_REPOSITORY_URL": "https://github.com/rht-labs/openshift-jenkins-s2i-config.git",
+                  "NAME": "jenkins"
+                }
+              },
+              {
+                "name": "jenkins-ephemeral",
+                "parameters": {
+                  "NAMESPACE": "pipelines",
+                  "MEMORY_LIMIT": "2Gi"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+- src: https://github.com/rht-labs/ansible-stacks/tree/master/roles/create-openshift-resources
+  version: "v1.0.0"
