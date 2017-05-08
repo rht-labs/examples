@@ -1,0 +1,92 @@
+{
+  "name": "jenkins",
+  "openshift_clusters": [
+    {
+      "openshift_resources": {
+        "projects": [
+          {
+            "name": "labs-ci-cd",
+            "display_name": "Labs CI / CD",
+            "environment_type": "build",
+            "templates": [
+              {
+                "filename": "files/java-app-build-template.json",
+                "parameters" : {
+                  "PIPELINE_SOURCE_REPOSITORY_URL" : "https://github.com/sherl0cks/Jenkinsfiles"
+                }
+              },
+              {
+                "filename": "files/mvn-build-pod-template.json",
+                "parameters": {
+                  "SOURCE_REPOSITORY_URL": "https://github.com/sherl0cks/examples",
+                  "SOURCE_REPOSITORY_REF": "ci-cd"
+                }
+              },
+              {
+                "filename": "files/nexus-persistent-template.json",
+                "parameters": {
+                  "VOLUME_CAPACITY": "10Gi",
+                  "MEMORY_LIMIT": "2Gi"
+                }
+              },
+              {
+                "name": "openshift//jenkins-ephemeral",
+                "parameters": {
+                  "NAMESPACE": "labs-ci-cd",
+                  "MEMORY_LIMIT": "2Gi"
+                }
+              },
+              {
+                "filename": "files/jenkins-s2i-template.json",
+                "parameters": {
+                  "SOURCE_REPOSITORY_URL": "https://github.com/sherl0cks/openshift-jenkins-s2i-config.git",
+                  "SOURCE_REPOSITORY_REF": "plugin-update",
+                  "NAME": "jenkins"
+                }
+              }
+            ]
+          },
+          {
+            "name": "labs-dev",
+            "display_name": "Labs Development",
+            "environment_type": "deploy",
+            "templates": [
+              {
+                "filename": "files/java-app-deploy-template.json",
+                "parameters": {
+                  "APP_NAMESPACE": "labs-dev"
+                }
+              }
+            ]
+          },
+          {
+            "name": "labs-test",
+            "display_name": "Labs Test",
+            "environment_type": "deploy",
+            "templates": [
+              {
+                "filename": "files/java-app-deploy-template.json",
+                "parameters": {
+                  "APP_NAMESPACE": "labs-test"
+                }
+              }
+            ]
+          },
+          {
+            "name": "labs-uat",
+            "display_name": "Labs User Acceptance Test",
+            "environment_type": "deploy",
+            "templates": [
+              {
+                "filename": "files/java-app-deploy-template.json",
+                "parameters": {
+                  "APP_NAMESPACE": "labs-uat"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

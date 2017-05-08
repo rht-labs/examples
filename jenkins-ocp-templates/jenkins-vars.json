@@ -10,14 +10,14 @@
             "environment_type": "build",
             "templates": [
               {
-                "name": "jenkins-s2i",
+                "filename": "jenkins-s2i-template.json",
                 "parameters": {
                   "SOURCE_REPOSITORY_URL": "https://github.com/rht-labs/openshift-jenkins-s2i-config.git",
                   "NAME": "jenkins"
                 }
               },
               {
-                "name": "jenkins-ephemeral",
+                "name": "openshift//jenkins-ephemeral",
                 "parameters": {
                   "NAMESPACE": "pipelines",
                   "MEMORY_LIMIT": "2Gi"
