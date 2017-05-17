@@ -131,8 +131,7 @@
         {
             "name": "SOURCE_CONTEXT_DIR",
             "displayName": "Git Context Directory",
-            "description": "Set this to the directory where the build information is (e.g. Dockerfile) if not using the default",
-            "value": "ci-cd-starter/builds/mvn-build-pod"
+            "description": "Set this to the directory where the build information is (e.g. Dockerfile) if not using the default"
         }
     ],
     "labels": {

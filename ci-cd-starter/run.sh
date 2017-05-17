@@ -8,7 +8,7 @@ if [ ! -L roles ]; then
 fi
 
 if [ ! -d roles ]; then
-  git clone https://github.com/sherl0cks/ansible-stacks.git
+  git clone https://github.com/rht-labs/ansible-stacks.git
   cd ansible-stacks
   git checkout template-processing
   cd ..

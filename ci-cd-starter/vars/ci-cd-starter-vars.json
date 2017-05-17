@@ -18,8 +18,8 @@
               {
                 "filename": "files/mvn-build-pod-template.json",
                 "parameters": {
-                  "SOURCE_REPOSITORY_URL": "https://github.com/sherl0cks/examples",
-                  "SOURCE_REPOSITORY_REF": "ci-cd"
+                  "SOURCE_REPOSITORY_URL": "https://github.com/rht-labs/examples",
+                  "SOURCE_CONTEXT_DIR" : "ci-cd-starter/builds/mvn-build-pod"
                 }
               },
               {
@@ -39,8 +39,7 @@
               {
                 "filename": "files/jenkins-s2i-template.json",
                 "parameters": {
-                  "SOURCE_REPOSITORY_URL": "https://github.com/sherl0cks/openshift-jenkins-s2i-config.git",
-                  "SOURCE_REPOSITORY_REF": "plugin-update",
+                  "SOURCE_REPOSITORY_URL": "https://github.com/rht-labs/openshift-jenkins-s2i-config.git",
                   "NAME": "jenkins"
                 }
               }

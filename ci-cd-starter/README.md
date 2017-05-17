@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This example will build a baseline CI / CD environment with an example Java app and a web app. The goal is to put in place common tools and ensure their integration, and then provide a few apps to show you the environment in action. We're using automation provide by our [ansible-stacks](https://github.com/sherl0cks/ansible-stacks/tree/template-processing) repository to power this example. Our hope is that you'll extend the approach we've taken here to model your own environment with an infrastructure as code mindset.
+This example will build a baseline CI / CD environment with an example Java app and a web app. The goal is to put in place common tools and ensure their integration, and then provide a few apps to show you the environment in action. We're using automation provide by our [ansible-stacks](https://github.com/rht-labs/ansible-stacks) repository to power this example. Our hope is that you'll extend the approach we've taken here to model your own environment with an infrastructure as code mindset.
 
 ## What's In The Box?
 
@@ -24,7 +24,7 @@ The following must be installed and on your `$PATH`
 - `oc` 3.5.x.x
 - `ansible` 2.2.0.0 or 2.2.1.0
 - `git`
-- `openshift` cluster with at least (1) PV with `RWX`. Default required size is 10Gi, but can be configured in the [the nexus template](vars/ci-cd-starter-vars.json). This is a fairly resource intensive example, so it's probably not fit for the [CDK](https://developers.redhat.com/products/cdk/overview/).
+- `openshift` 3.5.x.x cluster with at least (1) PV with `RWX`. Default required size is 10Gi, but can be configured in the [the nexus template](vars/ci-cd-starter-vars.json). This is a fairly resource intensive example, so it's probably not fit for the [CDK](https://developers.redhat.com/products/cdk/overview/).
 
 ## Usage
 
