@@ -1,0 +1,24 @@
+---
+
+- name: "Install CI / CD Starter"
+  hosts: openshift
+
+  vars_prompt:
+    - name: "openshift_user"
+      prompt: "user to login into OpenShift"
+    - name: "openshift_password"
+      prompt: "password for previous OpenShift user"
+      private: yes
+      confirm: yes
+    - name: "openshift_url"
+      prompt: "OpenShift REST API endpoint"
+
+  pre_tasks:
+
+  - include_vars:
+      file: ci-cd-starter-vars.json
+
+  roles:
+    - openshift-defaults
+    - create-openshift-resources
+    - configure-nexus

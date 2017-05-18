@@ -1,0 +1,14 @@
+---
+
+- name: "Install CI / CD Starter"
+  hosts: openshift
+
+  pre_tasks:
+
+  - include_vars:
+      dir: 'vars'
+
+  roles:
+    - openshift-defaults
+    - create-openshift-resources
+    - configure-nexus

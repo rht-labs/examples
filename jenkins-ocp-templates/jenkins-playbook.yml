@@ -1,0 +1,21 @@
+---
+
+- name: "Install & Instantiate Jenkins Templates"
+  hosts: openshift
+
+  vars_prompt:
+    - name: "openshift_user"
+      prompt: "user to login into OpenShift"
+    - name: "openshift_password"
+      prompt: "password for previous OpenShift user"
+    - name: "openshift_url"
+      prompt: "OpenShift REST API endpoint"
+
+  pre_tasks:
+
+  - include_vars:
+      file: jenkins-vars.json
+
+  roles:
+    - openshift-defaults
+    - create-openshift-resources
