@@ -28,7 +28,7 @@
                 "resources": {},
                 "runPolicy": "Serial",
                 "source": {
-                    "contextDir": "standard-java-mvn-s2i-binary",
+                    "contextDir": "${PIPELINE_CONTEXT_DIR}",
                     "git": {
                         "ref": "${PIPELINE_SOURCE_REPOSITORY_REF}",
                         "uri": "${PIPELINE_SOURCE_REPOSITORY_URL}"
@@ -140,6 +140,11 @@
             "displayName": "Git Reference",
             "description": "Set this to a branch name, tag or other ref of your repository if you are not using the default (master) branch.",
             "value": "master"
+        },
+        {
+            "name": "PIPELINE_CONTEXT_DIR",
+            "displayName": "Git Context Directory for Jenkinsfile",
+            "description": "Set this to the directory where the Jenkinsfile is if not using the default root directory"
         }
     ],
     "labels": {

@@ -221,7 +221,7 @@
       "description": "The Container Image to use for the ImageStream",
       "displayName": "Nexus Container Image",
       "name": "CONTAINER_IMAGE",
-      "value": "sonatype/docker-nexus3"
+      "value": "sonatype/nexus3"
     }
   ],
   "labels": {
