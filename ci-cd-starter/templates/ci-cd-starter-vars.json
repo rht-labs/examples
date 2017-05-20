@@ -1,5 +1,5 @@
 {
-  "comment_for_users" : "this file is managed by ansible. it is produced via templates/ci-cd-starter-vars.j2",
+  "comment_for_users" : "this file is managed as an ansible template, which can be found at templates/ci-cd-starter-vars.json",
   "openshift_clusters": [
     {
       "openshift_resources": {
@@ -10,21 +10,22 @@
             "environment_type": "build",
             "templates": [
               {
-                "filename": "files/java-app-build-template.json",
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-build-template.json",
                 "parameters" : {
                   "PIPELINE_SOURCE_REPOSITORY_URL" : "https://github.com/rht-labs/automation-api",
-                  "PIPELINE_SOURCE_REPOSITORY_REF" : "ci-cd-starter"
+                  "PIPELINE_SOURCE_REPOSITORY_REF" : "ci-cd-starter",
+                  "NAME" : "java-app"
                 }
               },
               {
-                "filename": "files/mvn-build-pod-template.json",
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/mvn-build-pod-template.json",
                 "parameters": {
                   "SOURCE_REPOSITORY_URL": "https://github.com/rht-labs/examples",
                   "SOURCE_CONTEXT_DIR" : "ci-cd-starter/builds/mvn-build-pod"
                 }
               },
               {
-                "filename": "files/nexus-persistent-template.json",
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/nexus-persistent-template.json",
                 "parameters": {
                   "VOLUME_CAPACITY": "10Gi",
                   "MEMORY_LIMIT": "2Gi"
@@ -48,7 +49,7 @@
                 }
               },
               {
-                "filename": "files/jenkins-s2i-template.json",
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/jenkins-s2i-template.json",
                 "parameters": {
                   "SOURCE_REPOSITORY_URL": "https://github.com/rht-labs/openshift-jenkins-s2i-config.git",
                   "NAME": "jenkins"
@@ -62,10 +63,11 @@
             "environment_type": "deploy",
             "templates": [
               {
-                "filename": "files/java-app-deploy-template.json",
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-deploy-template.json",
                 "parameters": {
                   "APP_NAMESPACE": "{{project_name_prefix}}-dev",
-                  "PIPELINES_NAMESPACE": "{{project_name_prefix}}-ci-cd"
+                  "PIPELINES_NAMESPACE": "{{project_name_prefix}}-ci-cd",
+                  "NAME" : "java-app"
                 }
               }
             ]
@@ -76,10 +78,11 @@
             "environment_type": "deploy",
             "templates": [
               {
-                "filename": "files/java-app-deploy-template.json",
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-deploy-template.json",
                 "parameters": {
                   "APP_NAMESPACE": "{{project_name_prefix}}-test",
-                  "PIPELINES_NAMESPACE": "{{project_name_prefix}}-ci-cd"
+                  "PIPELINES_NAMESPACE": "{{project_name_prefix}}-ci-cd",
+                  "NAME" : "java-app"
                 }
               }
             ]
@@ -90,10 +93,11 @@
             "environment_type": "deploy",
             "templates": [
               {
-                "filename": "files/java-app-deploy-template.json",
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-deploy-template.json",
                 "parameters": {
                   "APP_NAMESPACE": "{{project_name_prefix}}-uat",
-                  "PIPELINES_NAMESPACE": "{{project_name_prefix}}-ci-cd"
+                  "PIPELINES_NAMESPACE": "{{project_name_prefix}}-ci-cd",
+                  "NAME" : "java-app"
                 }
               }
             ]

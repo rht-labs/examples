@@ -19,7 +19,7 @@
       file: 'vars/project-names.json'
 
   - template:
-      src: templates/ci-cd-starter-vars.j2
+      src: templates/ci-cd-starter-vars.json
       dest: vars/ci-cd-starter-vars.json
 
   - include_vars:
