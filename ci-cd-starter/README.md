@@ -9,13 +9,14 @@ This example will build a baseline CI / CD environment with an example Java app 
 - Jenkins 2.x, configured with Blue Ocean and all OCP plugins. Jenkins is not backed by a persistent volume at this time.
 - Nexus 3.x, configured with Red Hat maven repositories and backed by a persistent volume
 - Java 8, Maven 3.3.x build slave for Jenkins, pre-configured to use Nexus
+- SonarQube 6.3 (latest) for performing quality analysis on projects
 - Example CI / CD pipeline, configured to work with Jenkins pipelines and OpenShift Pipeline builds
 - Example Java
 
 Still TODO:
 - Example web app (i.e. JS/HTML/CSS)
 - Example CI / CD pipeline for the web app
-- Sonarqube installation, integrated with the CI/CD pipelines.
+- Integrate SonarQube with CI/CD pipelines
 
 ## Requirements
 
