@@ -30,7 +30,7 @@
                 }
               },
               {
-                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-sonarqube/master/sonarqube-template.yaml",
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/sonarqube-template.json",
                 "parameters": {
                   "VOLUME_CAPACITY": "10Gi",
                   "MEMORY_LIMIT": "2Gi",
