@@ -10,7 +10,6 @@ fi
 if [ ! -d roles ]; then
   git clone https://github.com/rht-labs/ansible-stacks.git
   cd ansible-stacks
-  git checkout template-processing
   cd ..
   mv ansible-stacks/roles .
 fi

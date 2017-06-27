@@ -44,9 +44,9 @@ The script will prompt you for the following variables
 
 To put their credential information in an ansible vars file so they aren't prompted for it on CLI every time. Therefore; we wrote `run.sh` to detect the presence of `vars/openshift-vars.json`, `vars/openshift-vars.yaml` or `vars/openshift-vars.yml` and use those variable files instead of prompting you. These files are also `.gitignored` so you don't accidentally commit your credentials to SCM.
 
-### If You Want To Use A Project/Namespace
+### If You Want To Change the Projects/Namespaces Used in the Example
 
-You'll need to edit a [var file](vars/ci-cd-starer-vars.json). Specifically, a line that is related to a project name or namespace. You might want to do this because of collisions, or just for fun
+You'll need to edit the value of `"project_name_prefix"` in [the project_names.json var file](vars/project-names.json). The postfixes of `-ci-cd`, `-dev`, `-test` & `-uat` are static and required by other parts of automation, but you can update the prefix to your liking.
 
 ## Access Control
 

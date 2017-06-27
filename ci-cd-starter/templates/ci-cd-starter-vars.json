@@ -1,0 +1,109 @@
+{
+  "comment_for_users" : "this file is managed as an ansible template, which can be found at templates/ci-cd-starter-vars.json",
+  "openshift_clusters": [
+    {
+      "openshift_resources": {
+        "projects": [
+          {
+            "name": "{{project_name_prefix}}-ci-cd",
+            "display_name": "{{project_name_prefix|capitalize}} CI / CD",
+            "environment_type": "build",
+            "templates": [
+              {
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-build-template.json",
+                "parameters" : {
+                  "PIPELINE_SOURCE_REPOSITORY_URL" : "https://github.com/rht-labs/automation-api",
+                  "PIPELINE_SOURCE_REPOSITORY_REF" : "ci-cd-starter",
+                  "NAME" : "java-app"
+                }
+              },
+              {
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/mvn-build-pod-template.json",
+                "parameters": {
+                  "SOURCE_REPOSITORY_URL": "https://github.com/rht-labs/examples",
+                  "SOURCE_CONTEXT_DIR" : "ci-cd-starter/builds/mvn-build-pod"
+                }
+              },
+              {
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/nexus-persistent-template.json",
+                "parameters": {
+                  "VOLUME_CAPACITY": "10Gi",
+                  "MEMORY_LIMIT": "2Gi"
+                }
+              },
+              {
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/sonarqube-template.json",
+                "parameters": {
+                  "VOLUME_CAPACITY": "10Gi",
+                  "MEMORY_LIMIT": "2Gi",
+                  "SONARQUBE_VOLUME_CAPACITY": "5Gi",
+                  "SONARQUBE_MEMORY_LIMIT": "2Gi",
+                  "SONARQUBE_CPU_LIMIT": 2
+                }
+              },
+              {
+                "name": "openshift//jenkins-ephemeral",
+                "parameters": {
+                  "NAMESPACE": "{{project_name_prefix}}-ci-cd",
+                  "MEMORY_LIMIT": "2Gi"
+                }
+              },
+              {
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/jenkins-s2i-template.json",
+                "parameters": {
+                  "SOURCE_REPOSITORY_URL": "https://github.com/rht-labs/openshift-jenkins-s2i-config.git",
+                  "NAME": "jenkins"
+                }
+              }
+            ]
+          },
+          {
+            "name": "{{project_name_prefix}}-dev",
+            "display_name": "{{project_name_prefix|capitalize}} Development",
+            "environment_type": "deploy",
+            "templates": [
+              {
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-deploy-template.json",
+                "parameters": {
+                  "APP_NAMESPACE": "{{project_name_prefix}}-dev",
+                  "PIPELINES_NAMESPACE": "{{project_name_prefix}}-ci-cd",
+                  "NAME" : "java-app"
+                }
+              }
+            ]
+          },
+          {
+            "name": "{{project_name_prefix}}-test",
+            "display_name": "{{project_name_prefix|capitalize}} Test",
+            "environment_type": "deploy",
+            "templates": [
+              {
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-deploy-template.json",
+                "parameters": {
+                  "APP_NAMESPACE": "{{project_name_prefix}}-test",
+                  "PIPELINES_NAMESPACE": "{{project_name_prefix}}-ci-cd",
+                  "NAME" : "java-app"
+                }
+              }
+            ]
+          },
+          {
+            "name": "{{project_name_prefix}}-uat",
+            "display_name": "{{project_name_prefix|capitalize}} User Acceptance Test",
+            "environment_type": "deploy",
+            "templates": [
+              {
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-deploy-template.json",
+                "parameters": {
+                  "APP_NAMESPACE": "{{project_name_prefix}}-uat",
+                  "PIPELINES_NAMESPACE": "{{project_name_prefix}}-ci-cd",
+                  "NAME" : "java-app"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

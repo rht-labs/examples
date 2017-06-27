@@ -5,3 +5,4 @@ ansible-stacks
 vars/openshift-vars.json
 vars/openshift-vars.yaml
 vars/openshift-vars.yml
+vars/ci-cd-starter-vars.json
