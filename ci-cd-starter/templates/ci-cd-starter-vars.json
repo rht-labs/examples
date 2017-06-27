@@ -18,10 +18,11 @@
                 }
               },
               {
-                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/mvn-build-pod-template.json",
+                "filename": "https://raw.githubusercontent.com/sherl0cks/openshift-templates/master/build-pod-template.json",
                 "parameters": {
                   "SOURCE_REPOSITORY_URL": "https://github.com/rht-labs/examples",
-                  "SOURCE_CONTEXT_DIR" : "ci-cd-starter/builds/mvn-build-pod"
+                  "SOURCE_CONTEXT_DIR" : "ci-cd-starter/builds/mvn-build-pod",
+                  "NAME" : "mvn"
                 }
               },
               {
