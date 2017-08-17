@@ -18,22 +18,20 @@
                 }
               },
               {
-                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/build-pod-template.json",
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/npm-build-pod-using-scl/build-pod-template.json",
                 "parameters": {
                   "SOURCE_REPOSITORY_URL": "https://github.com/rht-labs/examples",
                   "SOURCE_CONTEXT_DIR" : "ci-cd-starter/builds/mvn-build-pod",
-                  "BUILDER_IMAGE_NAME" : "jenkins-slave-maven-centos7",
-                  "BUILDER_IMAGE_NAMESPACE" : "openshift",
+                  "BUILDER_IMAGE_NAME" : "registry.access.redhat.com/openshift3/jenkins-slave-base-rhel7:latest",
                   "NAME" : "mvn"
                 }
               },
               {
-                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/build-pod-template.json",
+                "filename": "https://raw.githubusercontent.com/rht-labs/openshift-templates/npm-build-pod-using-scl/build-pod-template.json",
                 "parameters": {
                   "SOURCE_REPOSITORY_URL": "https://github.com/rht-labs/examples",
                   "SOURCE_CONTEXT_DIR": "ci-cd-starter/builds/npm-build-pod",
-                  "BUILDER_IMAGE_NAME": "jenkins-slave-base-rhel7",
-                  "BUILDER_IMAGE_NAMESPACE": "registry.access.redhat.com/openshift3",
+                  "BUILDER_IMAGE_NAME": "registry.access.redhat.com/openshift3/jenkins-slave-base-rhel7:latest",
                   "NAME": "npm"
                 }
               },
@@ -52,13 +50,6 @@
                   "SONARQUBE_VOLUME_CAPACITY": "5Gi",
                   "SONARQUBE_MEMORY_LIMIT": "2Gi",
                   "SONARQUBE_CPU_LIMIT": 2
-                }
-              },
-              {
-                "name": "openshift//jenkins-ephemeral",
-                "parameters": {
-                  "NAMESPACE": "{{project_name_prefix}}-ci-cd",
-                  "MEMORY_LIMIT": "2Gi"
                 }
               },
               {
