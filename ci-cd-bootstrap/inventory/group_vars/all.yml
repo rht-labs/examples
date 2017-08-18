@@ -1,0 +1,69 @@
+---
+openshift_cluster_content:
+- object: namespace
+  content:
+  - name: "deven-labs-ci-cd"
+    file: "{{ inventory_dir }}/../files/labs-ci-cd/namespace/labs-ci-cd.yml"
+- object: policy
+  content:
+- object: builds
+  content:
+  - name: "java-app-build"
+    template: "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-build-template.json"
+    params: "{{ inventory_dir }}/../files/java-app/build_params"
+    namespace: deven-labs-ci-cd
+  - name: "mvn"
+    template: "https://raw.githubusercontent.com/rht-labs/openshift-templates/npm-build-pod-using-scl/build-pod-template.json"
+    params: "{{ inventory_dir }}/../files/mvn-build-pod/build_params"
+    namespace: deven-labs-ci-cd
+  - name: "npm"
+    template: "https://raw.githubusercontent.com/rht-labs/openshift-templates/npm-build-pod-using-scl/build-pod-template.json"
+    params: "{{ inventory_dir }}/../files/npm-build-pod/build_params"
+    namespace: deven-labs-ci-cd
+  - name: "nexus"
+    template: "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/nexus-persistent-template.json"
+    params: "{{ inventory_dir }}/../files/nexus/build_params"
+    namespace: deven-labs-ci-cd
+  - name: "sonarqube"
+    template: "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/sonarqube-template.json"
+    params: "{{ inventory_dir }}/../files/sonarqube/build_params"
+    namespace: deven-labs-ci-cd
+  - name: "jenkins-s2i"
+    template: "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/jenkins-s2i-template.json"
+    params: "{{ inventory_dir }}/../files/jenkins-s2i/build_params"
+    namespace: deven-labs-ci-cd
+  - name: "jenkins-ephemeral"
+    template: "openshift//jenkins-ephemeral"
+    params: "{{ inventory_dir }}/../files/jenkins-ephemeral/build_params"
+    namespace: deven-labs-ci-cd
+# - object: namespace
+#   content:
+#   - name: "cakephp-development"
+#     file: "{{ inventory_dir }}/../files/cakephp/namespace/development.yml"
+#   - name: "cakephp-stage"
+#     file: "{{ inventory_dir }}/../files/cakephp/namespace/stage.yml"
+#   - name: "cakephp-production"
+#     file: "{{ inventory_dir }}/../files/cakephp/namespace/production.yml"
+#   - name: "MyApp-development"
+#     file: "https://raw.githubusercontent.com/redhat-cop/cluster-lifecycle/master/namespaces/myapp-dev.yml"
+# - object: policy
+#   content:
+#   - file: "{{ inventory_dir }}/../files/policy/clusterroles.yml"
+#   - file: "{{ inventory_dir }}/../files/policy/clusterrolebindings.yml"
+#   - file: "{{ inventory_dir }}/../files/policy/storageclass.yml"
+# - object: builds
+#   content:
+#   - name: "cakephp"
+#     template: "{{ inventory_dir }}/../files/cakephp/build/template.yml"
+#     params: "{{ inventory_dir }}/../files/cakephp/build/development/params"
+# - object: deployments
+#   content:
+#   - name: "cakephp-development"
+#     template: "{{ inventory_dir }}/../files/cakephp/deployment/template.yml"
+#     params: "{{ inventory_dir }}/../files/cakephp/deployment/development/params"
+#   - name: "cakephp-stage"
+#     template: "{{ inventory_dir }}/../files/cakephp/deployment/template.yml"
+#     params: "{{ inventory_dir }}/../files/cakephp/deployment/stage/params"
+#   - name: "cakephp-development"
+#     template: "{{ inventory_dir }}/../files/cakephp/deployment/template.yml"
+#     params: "{{ inventory_dir }}/../files/cakephp/deployment/production/params"
