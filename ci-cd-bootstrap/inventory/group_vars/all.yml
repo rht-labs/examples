@@ -1,6 +1,6 @@
 ---
 openshift_cluster_content:
-- object: namespace
+- object: projectrequest
   content:
   - name: deven-labs-ci-cd
     file: "{{ inventory_dir }}/../files/namespaces/deven-labs-ci-cd.yml"
@@ -14,15 +14,19 @@ openshift_cluster_content:
   content:
 - object: builds
   content:
-  - name: java-app-build
-    template: https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-build-template.json
-    params: "{{ inventory_dir }}/../files/java-app/build_params"
+  - name: jenkins-s2i
+    template: "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/jenkins-s2i-template.json"
+    params: "{{ inventory_dir }}/../files/jenkins-s2i/build_params"
     namespace: deven-labs-ci-cd
-  - name: mvn
+  - name: jenkins-ephemeral
+    template: openshift//jenkins-ephemeral
+    params: "{{ inventory_dir }}/../files/jenkins-ephemeral/build_params"
+    namespace: deven-labs-ci-cd
+  - name: mvn-build-pod
     template: https://raw.githubusercontent.com/rht-labs/openshift-templates/npm-build-pod-using-scl/build-pod-template.json
     params: "{{ inventory_dir }}/../files/mvn-build-pod/build_params"
     namespace: deven-labs-ci-cd
-  - name: npm
+  - name: npm-build-pod
     template: https://raw.githubusercontent.com/rht-labs/openshift-templates/npm-build-pod-using-scl/build-pod-template.json
     params: "{{ inventory_dir }}/../files/npm-build-pod/build_params"
     namespace: deven-labs-ci-cd
@@ -31,14 +35,10 @@ openshift_cluster_content:
     params: "{{ inventory_dir }}/../files/nexus/build_params"
     namespace: deven-labs-ci-cd
   - name: sonarqube
-    template: https://raw.githubusercontent.com/rht-labs/openshift-templates/master/sonarqube-template.json
+    template: https://raw.githubusercontent.com/rht-labs/openshift-templates/fix-ldap-4-sonarqube/sonarqube-template.json
     params: "{{ inventory_dir }}/../files/sonarqube/build_params"
     namespace: deven-labs-ci-cd
-  - name: jenkins-s2i
-    template: "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/jenkins-s2i-template.json"
-    params: "{{ inventory_dir }}/../files/jenkins-s2i/build_params"
-    namespace: deven-labs-ci-cd
-  - name: jenkins-ephemeral
-    template: openshift//jenkins-ephemeral
-    params: "{{ inventory_dir }}/../files/jenkins-ephemeral/build_params"
+  - name: java-app-build
+    template: https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-build-template.json
+    params: "{{ inventory_dir }}/../files/java-app/build_params"
     namespace: deven-labs-ci-cd
