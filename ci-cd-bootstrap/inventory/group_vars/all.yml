@@ -2,32 +2,32 @@
 openshift_cluster_content:
 - object: namespace
   content:
-  - name: "deven-labs-ci-cd"
-    file: "{{ inventory_dir }}/../files/deven-labs-ci-cd/namespace/deven-labs-ci-cd.yml"
-  - name: "deven-labs-dev"
-    file: "{{ inventory_dir }}/../files/deven-labs-ci-cd/namespace/deven-labs-dev.yml"
-  - name: "deven-labs-test"
-    file: "{{ inventory_dir }}/../files/deven-labs-ci-cd/namespace/deven-labs-test.yml"
-  - name: "deven-labs-uat"
-    file: "{{ inventory_dir }}/../files/deven-labs-ci-cd/namespace/deven-labs-uat.yml"
+  - name: deven-labs-ci-cd
+    file: "{{ inventory_dir }}/../files/namespaces/deven-labs-ci-cd.yml"
+  - name: deven-labs-dev
+    file: "{{ inventory_dir }}/../files/namespaces/deven-labs-dev.yml"
+  - name: deven-labs-test
+    file: "{{ inventory_dir }}/../files/namespaces/deven-labs-test.yml"
+  - name: deven-labs-uat
+    file: "{{ inventory_dir }}/../files/namespaces/deven-labs-uat.yml"
 - object: policy
   content:
 - object: builds
   content:
-  - name: "java-app-build"
-    template: "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-build-template.json"
+  - name: java-app-build
+    template: https://raw.githubusercontent.com/rht-labs/openshift-templates/master/java-app-build-template.json
     params: "{{ inventory_dir }}/../files/java-app/build_params"
     namespace: deven-labs-ci-cd
-  - name: "mvn"
-    template: "https://raw.githubusercontent.com/rht-labs/openshift-templates/npm-build-pod-using-scl/build-pod-template.json"
+  - name: mvn
+    template: https://raw.githubusercontent.com/rht-labs/openshift-templates/npm-build-pod-using-scl/build-pod-template.json
     params: "{{ inventory_dir }}/../files/mvn-build-pod/build_params"
     namespace: deven-labs-ci-cd
-  - name: "npm"
-    template: "https://raw.githubusercontent.com/rht-labs/openshift-templates/npm-build-pod-using-scl/build-pod-template.json"
+  - name: npm
+    template: https://raw.githubusercontent.com/rht-labs/openshift-templates/npm-build-pod-using-scl/build-pod-template.json
     params: "{{ inventory_dir }}/../files/npm-build-pod/build_params"
     namespace: deven-labs-ci-cd
-  - name: "nexus"
-    template: "https://raw.githubusercontent.com/rht-labs/openshift-templates/master/nexus-persistent-template.json"
+  - name: nexus
+    template: https://raw.githubusercontent.com/rht-labs/openshift-templates/master/nexus-persistent-template.json
     params: "{{ inventory_dir }}/../files/nexus/build_params"
     namespace: deven-labs-ci-cd
   - name: sonarqube
