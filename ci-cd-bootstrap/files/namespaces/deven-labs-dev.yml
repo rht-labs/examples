@@ -1,0 +1,71 @@
+---
+kind: List
+apiVersion: v1
+metadata: {}
+items:
+- apiVersion: v1
+  kind: ProjectRequest
+  metadata:
+    annotations:
+      openshift.io/description: ''
+      openshift.io/display-name: Labs Dev
+    creationTimestamp:
+    name: deven-labs-dev
+  spec: {}
+  status: {}
+- apiVersion: v1
+  groupNames:
+  - system:serviceaccounts:deven-labs-dev
+  kind: RoleBinding
+  metadata:
+    creationTimestamp:
+    name: system:image-pullers
+    namespace: deven-labs-dev
+  roleRef:
+    name: system:image-puller
+  subjects:
+  - kind: SystemGroup
+    name: system:serviceaccounts:deven-labs-dev
+  userNames:
+- apiVersion: v1
+  groupNames:
+  kind: RoleBinding
+  metadata:
+    creationTimestamp:
+    name: system:image-builders
+    namespace: deven-labs-dev
+  roleRef:
+    name: system:image-builder
+  subjects:
+  - kind: ServiceAccount
+    name: builder
+  userNames:
+  - system:serviceaccount:deven-labs-dev:builder
+- apiVersion: v1
+  groupNames:
+  kind: RoleBinding
+  metadata:
+    creationTimestamp:
+    name: system:deployers
+    namespace: deven-labs-dev
+  roleRef:
+    name: system:deployer
+  subjects:
+  - kind: ServiceAccount
+    name: deployer
+  userNames:
+  - system:serviceaccount:deven-labs-dev:deployer
+- apiVersion: v1
+  groupNames:
+  - developers
+  kind: RoleBinding
+  metadata:
+    creationTimestamp:
+    name: developer-edit
+    namespace: deven-labs-dev
+  roleRef:
+    name: edit
+  subjects:
+  - kind: Group
+    name: developers
+  userNames:
