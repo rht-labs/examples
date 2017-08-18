@@ -4,6 +4,12 @@ openshift_cluster_content:
   content:
   - name: "deven-labs-ci-cd"
     file: "{{ inventory_dir }}/../files/deven-labs-ci-cd/namespace/deven-labs-ci-cd.yml"
+  - name: "deven-labs-dev"
+    file: "{{ inventory_dir }}/../files/deven-labs-ci-cd/namespace/deven-labs-dev.yml"
+  - name: "deven-labs-test"
+    file: "{{ inventory_dir }}/../files/deven-labs-ci-cd/namespace/deven-labs-test.yml"
+  - name: "deven-labs-uat"
+    file: "{{ inventory_dir }}/../files/deven-labs-ci-cd/namespace/deven-labs-uat.yml"
 - object: policy
   content:
 - object: builds
