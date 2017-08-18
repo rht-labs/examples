@@ -18,12 +18,12 @@ fi
 if [ -f vars/openshift-vars.json ] || [ -f vars/openshift-vars.yaml ] || [ -f vars/openshift-vars.yml ]; then
 
   # the user has provided an openshift vars file for us - select the playbook that will use it
-  ansible-playbook playbook-with-include-vars.yml -i inventory_cluster
+  ansible-playbook -vvvv playbook-with-include-vars.yml -i inventory_cluster
 
 else
 
   # prompt the user for openshift vars
-  ansible-playbook playbook-with-vars-prompt.yml -i inventory_cluster
+  ansible-playbook -vvvv playbook-with-vars-prompt.yml -i inventory_cluster
 
 fi
 
